@@ -15,6 +15,6 @@ const inputSchema = new mongoose.Schema({
     }
 });
 
-const Input = mongoose.model('Input', inputSchema);
+const Input = mongoose.models.Input || mongoose.model('Input', inputSchema);
 
 module.exports = Input;

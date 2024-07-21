@@ -22,7 +22,8 @@ export default function Test() {
             //         }
             //     ]
             // });
-            const res = await apiClient.post('/input', { value: "test", topic: "test" });
+            // const res = await apiClient.post('/input/create', { value: "test2", topic: "test2" });
+            const res = await apiClient.get('/input/list');
     
 
             console.log("Settings created", res);
