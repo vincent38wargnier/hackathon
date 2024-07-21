@@ -11,6 +11,8 @@ const StyledLink = styled.button`
     text-decoration: none;
     color: #000;
 `;
+import FlashCardContainer from "@/components/FlashCardCountainer";
+import GenerateFlashCard from "@/components/GenerateFlashCard";
 
 export default function Page() {
   return (
@@ -24,6 +26,7 @@ export default function Page() {
           <h1 className="text-3xl font-extrabold">HackYourHeatlh ⚡️</h1>
            <p> We simplify health and offer personalized healthcare learning solutions. </p>
           <Test />
+          <GenerateFlashCard />
         </section>
       </main>
     </>
