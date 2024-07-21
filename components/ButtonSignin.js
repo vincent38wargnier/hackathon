@@ -37,7 +37,7 @@ const ButtonSignin = ({ text = "Get started", extraStyle }) => {
             height={24}
           />
         ) : (
-          <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
+          <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0 mr-100">
             {session.user?.name?.charAt(0) || session.user?.email?.charAt(0)}
           </span>
         )}
