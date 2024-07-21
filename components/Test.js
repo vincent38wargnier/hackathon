@@ -33,6 +33,6 @@ export default function Test() {
     }
 
     return (
-        <button onClick={test} className='bg-red-400   p-5'>TEST</button>
+        <button onClick={test} className='bg-red-400   p-5'>Get Started</button>
     )
 }

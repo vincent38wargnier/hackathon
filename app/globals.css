@@ -5,11 +5,17 @@
 html,
 body {
   scroll-behavior: smooth !important;
+  background-color: #E7ECFF;
 }
 
 /* It makes the HTML progress bar filling smooth when value change. */
 progress::-webkit-progress-value {
   transition: 0.6s width ease-out;
+}
+
+button{
+    border-radius: 12px;
+    color: white;
 }
 
 @layer base {
