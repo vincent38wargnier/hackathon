@@ -1,5 +1,6 @@
 import { z } from "zod";
 import Input from "@/models/Input";
+import Output from "@/models/Output";
 import connectMongo from "@/libs/mongoose";
 import { getJsonLlmResponse } from "../functions";
 import Anthropic from "@anthropic-ai/sdk";
@@ -60,7 +61,6 @@ export const generateFlashcards = async (inputId) => {
         const flashcardsSet = await getJsonLlmResponse(flashcardsSetSchema, FLASHCARDS_PROMPT, "gpt-4o");
         console.log("Flashcards Set:", flashcardsSet);
 
-        // Now, let's use Anthropic's Claude to select the best flashcard
         const BEST_FLASHCARD_PROMPT = `
         Analyze the following set of flashcards and select the best one based on these criteria:
         1. Relevance to the original input
@@ -98,7 +98,26 @@ export const generateFlashcards = async (inputId) => {
 
         const bestFlashcard = flashcardsSet.flashcards[bestFlashcardIndex];
 
-        return { ...bestFlashcard, originalInput: input.value };
+        // Create a new output document
+        const outputContent = {
+            front: bestFlashcard.front,
+            back: bestFlashcard.back,
+            difficultyLevel: bestFlashcard.difficultyLevel,
+            ageGroup: bestFlashcard.ageGroup,
+            learningObjective: bestFlashcard.learningObjective,
+            techKeywords: bestFlashcard.techKeywords,
+            originalInput: input.value
+        };
+
+        const newOutput = new Output({
+            value: JSON.stringify(outputContent),
+            type: "flashcard",
+            topic: input.topic  // Copying the topic from the input
+        });
+
+        await newOutput.save();
+
+        return newOutput;
 
     } catch (error) {
         console.error("Error generating flashcards:", error);

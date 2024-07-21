@@ -47,9 +47,9 @@ const Header = () => {
           <Link
             className="flex items-center gap-2 shrink-0 "
             href="/"
-            title={`${config.appName} hompage`}
+            title={`Know More, Live Better`}
           >
-            <Image
+            {/* <Image
               src={logo}
               alt={`${config.appName} logo`}
               className="w-8"
@@ -57,8 +57,8 @@ const Header = () => {
               priority={true}
               width={32}
               height={32}
-            />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            /> */}
+            <span className="font-extrabold text-lg">Know More, Live Better</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
@@ -101,7 +101,7 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        {/* <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div> */}
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
